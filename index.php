@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-    <title>MathiasDeGucht.be &bull; Projecten &bull; Games &bull; Yahtzee</title>
+    <meta charset="utf-8" />
+    <title>bladsteenschaar.be :: projecten :: yahtzee</title>
     <link rel="icon" href="favicon.gif" type="image/gif" />
-    <link href="stijl.css" rel="stylesheet" type="text/css" />
-    <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
-    <script src="../Frameworks/jquery/1.5.1.min.js" type="text/javascript"></script>
-    <script src="functions.js" type="text/javascript"></script>
-    <script src="yahtzee.js" type="text/javascript"></script>
+    <link href="./stijl.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./functions.js" type="text/javascript" defer></script>
+    <script src="./yahtzee.js" type="text/javascript" defer></script>
 </head>
 
 <body>
