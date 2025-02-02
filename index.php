@@ -2,63 +2,19 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>bladsteenschaar.be :: projecten :: yahtzee</title>
+    <title>bladsteenschaar.be :: yahtzee</title>
     <link rel="icon" href="favicon.gif" type="image/gif" />
-    <link href="./stijl.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.5.1/jquery.min.js" integrity="sha512-P4RKBldxaN4FsYfnJ90HuaIM8EU80A4orv3u/PeD3GgOvZQezXmlOrJlEK8fhVmEwt3HdWXvDbEdS6bkb1nXSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./functions.js" type="text/javascript" defer></script>
-    <script src="./yahtzee.js" type="text/javascript" defer></script>
+    <script src="js/functions.js" type="text/javascript" defer></script>
+    <script src="js/yahtzee.js" type="text/javascript" defer></script>
 </head>
 
 <body>
 	
 	<div id="preload"><img src="img/dobbelsteen.png" alt="dobbelsteenSprite" /></div>
     
-    <div id="topscores">
-    	<h3>Topscores</h3>
-        <div id="loadingGif"><img src="img/laden.gif" alt="laden..." /></div>
-        <div id="topscoresText">
-            <?php
-            	include("score.php");
-            ?>
-            <form id="addTopscoreForm">
-                <input id="addTopscoreFormNaam" type="text" placeholder="Uw naam" name="naam" required="required" /><br />
-                <input class="button gray medium" id="addTopscoreFormSubmit" type="submit" name="submit" value="Verzend" />
-            </form>
-            <a href="#" id="laatAlleScoresZien">Alle scores</a>
-            <div id="loadingGif2"><img src="img/laden.gif" alt="laden..." /></div>
-        </div>
-    </div>
-
-    <div id="dobbelStenenDiv">
-        <div>
-            <a class="button gray rechts" href="index.php">Begin opnieuw</a>
-        </div>
-        <div>
-            <button class="button gray" id="throwButton">Gooien</button>
-        </div>
-        <div class="dice" id="dice1">
-            <button disabled="disabled" class="holdButton" id="hold1">Houden</button>
-            <span class="diceImgHolder"></span>
-        </div>
-        <div class="dice" id="dice2">
-            <button disabled="disabled" class="holdButton" id="hold2">Houden</button>
-            <span class="diceImgHolder"></span>
-        </div>
-        <div class="dice" id="dice3">
-            <button disabled="disabled" class="holdButton" id="hold3">Houden</button>
-            <span class="diceImgHolder"></span>
-        </div>
-        <div class="dice" id="dice4">
-            <button disabled="disabled" class="holdButton" id="hold4">Houden</button>
-            <span class="diceImgHolder"></span>
-        </div>
-        <div class="dice" id="dice5">
-            <button disabled="disabled" class="holdButton" id="hold5">Houden</button>
-            <span class="diceImgHolder"></span>
-        </div>
-    </div>
-    <div id="scoreTabel">
+    <div id="score-tabel">
         <h3>Score lijst</h3>
         <table>
             <tr>
@@ -143,5 +99,55 @@
             </tr>
         </table>
     </div>
+
+
+    <div id="spelbord">
+        <div class="restart-button">
+            <button class="button gray" id="restart-button">Begin opnieuw</button>
+        </div>
+        <div class="throw-button">
+            <button class="button gray" id="throw-button">Gooien</button>
+        </div>
+        <div class="dice" id="dice1">
+            <button disabled="disabled" class="hold-button" id="hold1">Houden</button>
+            <span class="dice-image-holder"></span>
+        </div>
+        <div class="dice" id="dice2">
+            <button disabled="disabled" class="hold-button" id="hold2">Houden</button>
+            <span class="dice-image-holder"></span>
+        </div>
+        <div class="dice" id="dice3">
+            <button disabled="disabled" class="hold-button" id="hold3">Houden</button>
+            <span class="dice-image-holder"></span>
+        </div>
+        <div class="dice" id="dice4">
+            <button disabled="disabled" class="hold-button" id="hold4">Houden</button>
+            <span class="dice-image-holder"></span>
+        </div>
+        <div class="dice" id="dice5">
+            <button disabled="disabled" class="hold-button" id="hold5">Houden</button>
+            <span class="dice-image-holder"></span>
+        </div>
+    </div>
+
+        <div id="topscores">
+    	<h3>Topscores</h3>
+        <div id="loadingGif"><img src="img/laden.gif" alt="laden..." /></div>
+        <div id="topscoresText">
+            <?php
+            	include("score.php");
+            ?>
+            <form id="addTopscoreForm">
+                <input id="addTopscoreFormNaam" type="text" placeholder="Uw naam" name="naam" required="required" /><br />
+                <input class="button gray medium" id="addTopscoreFormSubmit" type="submit" name="submit" value="Verzend" />
+            </form>
+            <a href="#" id="show-all-scores">Alle scores</a>
+            <div id="loadingGif2">
+                <img src="img/laden.gif" alt="laden..." />
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>

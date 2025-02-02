@@ -1,46 +1,45 @@
 <?php
 
-/* maakt een connectie aan met de juiste database */
-function connect(){
+function connect(): PDO
+{
     $dsn = 'sqlite:yahtzee.sqlite';
     
     try {
         $db = new PDO($dsn);
-    }catch(PDOException $e){
+    } catch (PDOException $e) {
         echo $e->getMessage();
     }
+
     return $db;
 }
 
-/* Deze functie voegt een nieuwe score toe aan de sqlite-database */
-function addScore($naam, $score){
+function addScore(string $naam, int $score): void
+{
 	$dbh = connect();
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
-	$sql = "INSERT INTO scores (naam, score) VALUES (:naam,:score)";
+	$sql = "INSERT INTO scores (naam, score) VALUES (:naam, :score)";
 	$stm = $dbh->prepare($sql);
 	$stm->bindValue(':naam',$naam, PDO::PARAM_STR);
 	$stm->bindValue(':score',$score, PDO::PARAM_INT);
 	$stm->execute();
 	
 	$dbh = null;
-	
 }
 
-/* Deze functie schrijft de top 10 scores naar het scherm
- *  */
-function getScores($laatstBehaaldeScore = null){
+function getScores($laatstBehaaldeScore = null): string
+{
     $dbh = connect();
-    $sql = "SELECT naam,score FROM scores ORDER BY score DESC LIMIT 10";
+    $sql = "SELECT naam, score FROM scores ORDER BY score DESC LIMIT 10";
 	
 	$i = 1;
-	$r = '';
-	$r .= '<table>';
+	$r = '<table>';
+
     foreach ($dbh->query($sql) as $row){
         $naam = stripslashes(html_entity_decode($row['naam']));
         $score = $row['score'];
-		$klasse = ($i==10) ? "id=\"laagsteScore\" " : "";
-		$klasseVoorLaatstBehaaldeScore = ($score == $laatstBehaaldeScore) ? "class=\"spelersLaatstBehaaldeScore\" " : "";
+		$klasse = ($i === 10) ? "id='laagsteScore'" : "";
+		$klasseVoorLaatstBehaaldeScore = ($score === $laatstBehaaldeScore) ? "class='spelersLaatstBehaaldeScore'" : "";
 		
 		$r .= "<tr $klasseVoorLaatstBehaaldeScore>";
         $r .= "<td class='nummering'>$i.</td>";
@@ -82,7 +81,7 @@ function getRestScores(){
 }
 
 $wat = isset($_GET['w']) ? $_GET['w'] : '';
-$laatstBehaaldeScore = isset($_GET['s']) ? $_GET['s'] : ''; // Om deze lijn te kunnen kleuren in de scoretabel
+$laatstBehaaldeScore = isset($_GET['s']) ? $_GET['s'] : ''; // Om deze lijn te kunnen kleuren in de score-tabel
 
 if($wat == 'post'){
     $newNaam = trim($_POST['naam']);
